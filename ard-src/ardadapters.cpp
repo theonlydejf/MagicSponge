@@ -16,11 +16,11 @@ void ArdDisplayAdapter::init()
 
 void ArdDisplayAdapter::pushSegments(uint8_t data)
 {
-    for(int i = 0; data != 0; data >>= 1)
+    for(int i = 0; i < 8; i++)
     {
         bool segState = data & 1;
         digitalWrite(segmentStartPin + SEGMENT_PIN_OFFSETS[i], !segState);
-        i++;
+        data >>= 1;
     }
 }
 

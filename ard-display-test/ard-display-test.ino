@@ -25,11 +25,11 @@ void setup()
 
     TCCR1B |= 0b00000100;
     TIMSK1 |= 0b00000010;
-    OCR1A = 62;
+    OCR1A = 30;
     sei();
 
-    for(int i = 0; i < 4; i++)
-        displayDriver.setDigit(i, 0xFF);
+    // for(int i = 0; i < 4; i++)
+    //     displayDriver.setDigit(i, 0xFF);
 }
 
 void loop()
