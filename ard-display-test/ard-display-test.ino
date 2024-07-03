@@ -30,6 +30,8 @@ void setup()
 
     // for(int i = 0; i < 4; i++)
     //     displayDriver.setDigit(i, 0xFF);
+    dispAdapter.init();
+    displayDriver.init();
 }
 
 void loop()
