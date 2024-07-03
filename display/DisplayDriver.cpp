@@ -1,6 +1,6 @@
 #include "display.h"
 
-void DisplayDriver::step()
+void DisplayDriver::muxStep()
 {
     adapter->disableDigit(lastDigitID);
     lastDigitID = (lastDigitID + 1) % DIGIT_CNT;

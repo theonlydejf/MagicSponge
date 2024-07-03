@@ -19,7 +19,7 @@ class DisplayDriver
 public:
     static constexpr uint8_t DIGIT_CNT = 4;
     DisplayDriver(DisplayAdapter* adapter) : adapter(adapter) {}
-    void step();
+    void muxStep();
     void init();
     void setDigit(uint8_t digitID, uint8_t data);
 private:

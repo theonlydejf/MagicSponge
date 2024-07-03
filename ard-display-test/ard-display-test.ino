@@ -51,5 +51,5 @@ bool smth = false;
 ISR(TIMER1_COMPA_vect)
 {
     TCNT1 = 0;
-    displayDriver.step();
+    displayDriver.muxStep();
 }
