@@ -18,9 +18,11 @@ public:
     public:
         bool down();
         bool pressed();
-        bool risingEdgeFiltered();
     private:
         ButtonAdapter* adapter;
+        unsigned long pressStart = 0;
+        bool state = false;
+        bool _pressed = false;
 
         Button(ButtonAdapter* adapter) : adapter(adapter) {}
 
