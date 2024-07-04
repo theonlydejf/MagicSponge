@@ -7,9 +7,9 @@ template<size_t BTN_COUNT>
 class ButtonsDriver
 {
 public:
-    ButtonsDriver(ButtonAdapter* adapters, TimeAdapter* timeAdapter,
-        unsigned maxBounceDuration = 50);
+    static unsigned maxBounceDurationMs = 50;
 
+    ButtonsDriver(ButtonAdapter* adapters, TimeAdapter* timeAdapter);
     void update();
     const Button& getButton(size_t id) { return buttons[id]; }
 
@@ -29,7 +29,6 @@ public:
 private:
     Button buttons[BTN_COUNT];
     TimeAdapter* timeAdapter;
-    unsigned maxBounceDuration;
 };
 
 #endif /* BUTTONS_DRIVER_H */
