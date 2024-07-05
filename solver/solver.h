@@ -89,8 +89,27 @@ public:
      */
     SquareSolver4x4();
     bool solveFor(int x) override;
+    /**
+     * @brief Solves a Magic Square for a specified sum, while finding the best values of
+     *        of the free cells such that the varience of the character lengths of the
+     *        cell values is as small as possible
+     * 
+     * @param x The target sum
+     * @param rng A random number generating method used for free cell value attempts
+     * @param attemptCnt Number of attempts from which the best square will be chosen
+     * @return False if finding the square was not successful (eg. all the values would
+     *         not fit onto the screen)
+     */
     bool solveGoodLookingFor(int x, double(*rng)(), int attemptCnt = 50);
     int size() const override;
+    /**
+     * @brief Gets a pointer to the free cell with a specified index
+     * 
+     * @param idx 0-based index of the free cell (indexed left to right, top to bottom, 
+     *            dependant cells are skipped while indexing)
+     * @return A PtrWrapper object pointing to the free cell. Use the = operator for
+     *         assigning the cell value
+     */
     PtrWrapper<double> getFreeCell(int idx) const;
 private:
     double *a, *b, *c, *d, *e, *f, *g, *h, *i, *j, *k, *l, *m, *n, *o, *p;

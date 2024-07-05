@@ -85,19 +85,19 @@ bool SquareSolver4x4::solveGoodLookingFor(int x, double(*rng)(), int attemptCnt)
         for(int i = 0; i < FREE_CELLS_CNT; i++)
             getFreeCell(i) = rng();
         solveFor(x);
+
+        // Check if values are valid
         bool valid = true;
-
-        for(int i = 0; i < dataSize(); i++)
+        for(int i = 0; valid && i < dataSize(); i++)
         {
-            if(data[i] == x)
-            {
+            if(data[i] == x) // Square should not contain the target
                 valid = false;
-                break;
-            }
+            if(data[i] < -999 || data[i] > 9999) // values should fit onto the screen
+                valid = false;
         }
-
         if(!valid)
             continue;
+
         double currVariance = dataDigitCntVariance();
         if(currVariance < bestVariance)
         {
@@ -108,7 +108,8 @@ bool SquareSolver4x4::solveGoodLookingFor(int x, double(*rng)(), int attemptCnt)
                 bestFreeCells[i] = getFreeCell(i);
         }
     }
-
+    if(!found)
+        return false;
     for (int i = 0; i < FREE_CELLS_CNT; i++)
         getFreeCell(i) = bestFreeCells[i];
     solveFor(x);
