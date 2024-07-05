@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "ardadapters.h"
 
 constexpr uint8_t ArdDisplayAdapter::SEGMENT_PIN_OFFSETS[];
