@@ -9,11 +9,17 @@ ButtonsDriver<BTN_COUNT>::ButtonsDriver(ButtonAdapter* adapters, TimeAdapter* ti
 }
 
 template<size_t BTN_COUNT>
-void ButtonsDriver<BTN_COUNT>::update()
+bool ButtonsDriver<BTN_COUNT>::update()
 {
+    bool foundPressed = false;
     unsigned long currentTimestamp = timeAdapter->timeStamp();
     for (size_t i = 0; i < BTN_COUNT; ++i)
+    {
         buttons[i].update(currentTimestamp);
+        if(buttons[i].pressed())
+            foundPressed = true;
+    }
+    return foundPressed;
 }
 
 template<size_t BTN_COUNT>

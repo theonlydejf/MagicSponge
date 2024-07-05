@@ -10,7 +10,7 @@ public:
     static unsigned maxBounceDurationMs = 50;
 
     ButtonsDriver(ButtonAdapter* adapters, TimeAdapter* timeAdapter);
-    void update();
+    bool update();
     const Button& getButton(size_t id) { return buttons[id]; }
 
     class Button
