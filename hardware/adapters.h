@@ -20,11 +20,14 @@ public:
     void setBrightness(int brightness) { this->brightness = brightness; }
     int getBrightness() { return brightness; }
 
-    void setState(bool on) { state = on; writeState(state, brightness); }
+    void setState(bool on) { state = on; writeState(enabled && state, brightness); }
     bool getState() { return state; }
+    void setEnabled(bool enabled);
+    bool getEnabled() { return enabled; }
 private:
     int brightness = 255;
     bool state = false;
+    bool enabled = true;
 };
 
 #endif /* ADAPTERS_H */
